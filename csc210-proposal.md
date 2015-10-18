@@ -1,9 +1,9 @@
 # ClikUR210
                                           ##**ClikUR**  
-                                          __Project Milestone 1**
-                                          CSC 210: Web Programming
-                                          Group: Abdullah Al Mamun, Yukako Ito
-                                          Due 10/20 11:59pm  
+__Project Milestone 1**  
+CSC 210: Web Programming  
+Group: Abdullah Al Mamun, Yukako Ito  
+Due 10/20 11:59pm  
   
 ##**Target Audience + Problem**  
 ClikUR targets college students and professors, hoping to solve the monetary obstacle of purchasing a Clicker device, to ease the communication between students and professor, and also making it easy for the data to be accessed by both parties.  
