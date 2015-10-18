@@ -1,6 +1,6 @@
 # ClikUR210
-                                          ##**ClikUR**  
-__Project Milestone 1**  
+##**ClikUR**  
+__Project Milestone 1__**  
 CSC 210: Web Programming  
 Group: Abdullah Al Mamun, Yukako Ito  
 Due 10/20 11:59pm  
