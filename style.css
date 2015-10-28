@@ -1,0 +1,54 @@
+html{
+	background-color: lightgrey;
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	-o-background-size: cover;
+	background-size: cover;
+}
+
+footer{
+
+	position: fixed;
+	bottom: 0;
+	left: 50%;
+	margin-left: -200px;
+
+}
+
+/*have to change the color settings of nav and navpills*/
+
+.centerBOX{
+	font-family: Verdana;
+	height: 300px;
+	width: 500px;
+	position: absolute;
+	top: 52%;
+	left: 50%;
+	margin-top: -100px;
+	margin-left: -200px;
+
+
+}
+
+.aftercenterBOX{
+	font-family: Verdana;
+	height: 300px;
+	width: 1000px;
+	position: absolute;
+	top: 62%;
+	left: 60%;
+	margin-top: -100px;
+	margin-left: -200px;
+}
+
+.defaulting{
+
+	height: 0px;
+	width: 0px;
+	position: fixed;
+	top: 0%;
+	left: 0%;
+	margin-top: 0px;
+	margin-left: 0px;
+
+}
