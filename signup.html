@@ -1,75 +1,33 @@
 <!DOCTYPE html>
-<html>
+	<html>
 	<head>
-			<title>ClikUR | SignUp</title>
-			<link href="style.css" type="text/css" rel="stylesheet">
-			<link href="cssforsignup.css" type="text/css" rel="stylesheet">
-			<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
-			
-			<script src="./jquery-2.1.4.min.js"></script>
-	   		<script src="./jqueryScript.js"> </script>
-			
+		<title>ClikUR | SignUp</title>
+		<link href="style.css" rel="stylesheet" type="text/css" />
+		<link href="cssforsignup.css" rel="stylesheet" type="text/css" />
+		<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet" /><script src="./jquery-2.1.4.min.js"></script><script src="./jqueryScript.js"> </script>
 	</head>
 
 	<body>
+		<div class="container-fluid" style="background: linear-gradient(lightblue, white);">
+		<header>
+			<nav>
+			<ul class="nav nav-pills pull-right">
+			<li role="presentation"><a href="home.html">Home</a></li>
+			<li class="active" role="presentation"><a href="#">Sign Up</a></li>
+			<li role="presentation"><a href="#">Log In</a></li>
+			</ul>
+			</nav>
 
-		<div class="container-fluid" style="background-color: lightgrey">
-			
-			<header>
-					
-					<nav>
-						<ul class="nav nav-pills pull-right">
-							<li role="presentation"> <a href="home.html">Home</a></li>
-							<li role="presentation" class="active"> <a href="#">Sign Up</a> </li>
-							<li role="presentation"> <a>Log In</a> </li>
-						</ul>
-					</nav>
-					<h1 class="text-muted"> ClikUR </h1>
+			<h1 class="text-muted"><span style="font-family:tahoma,geneva,sans-serif;">ClikUR</span></h1>
+		</header>
+		<section class="wholeBOX">
+			<p>&nbsp;</p>
+			<form class="form-signin"><label class="sr-only" for="inputFirstName">Name</label> <input autofocus="" class="form-control" id="inputFirstName" name="inputFirstName" placeholder="First Name" required="" type="name" /> <label class="sr-only" for="inputLastName">Name</label> <input autofocus="" class="form-control" id="inputLastName" name="inputLastName" placeholder="Last Name" required="" type="name" /> <label class="sr-only" for="inputEmail">Email address</label> <input autofocus="" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email address" required="" type="email" /> <label class="sr-only" for="inputPassword">Password</label> <input class="form-control" id="inputPassword" name="inputPassword" placeholder="Password" required="" type="password" /> <label class="sr-only" for="inputStudentID">Password</label> <input class="form-control" id="inputNumber" name="inputNumber" placeholder="StudentID" required="" type="number" />&nbsp;</form>
+		</section>
 
-			<header>
-
-			<section class="wholeBOX">
-				
-				<form class="form-signin">
-					
-					<label for="inputFirstName" class="sr-only">Name</label>
-					
-					<input type="name" name="inputFirstName" id="inputFirstName" class="form-control" placeholder="First Name" required autofocus>
-
-					<label for="inputLastName" class="sr-only">Name</label>
-
-					<input type="name" name="inputLastName" id="inputLastName" class="form-control" placeholder="Last Name" required autofocus>
-
-					<label for="inputEmail" class="sr-only">Email address</label>
-			       
-			        <input type="email" name="inputEmail" id="inputEmail" class="form-control" placeholder="Email address" required autofocus>
-
-			        <label for="inputPassword" class="sr-only">Password</label>
-			        
-			        <input type="password" name="inputPassword" id="inputPassword" class="form-control" placeholder="Password" required>
-
-			        <label for="inputStudentID" class="sr-only">Password</label>
-
-			        <input type="number" name="inputNumber" id="inputNumber" class="form-control" placeholder="StudentID" required>
-
-				</form>
-
-			</section>
-
-			</section>
-
-			<section class="defaulting">
-			</section>
-
-			<footer>
-				<h5> Be careful with whatever you do.... Do not change anything just cuz!!! </h5>
-			</footer>
-
-
-		</div>
-
+		<footer>
+			<h5><em>ClikUR: Saving Money and Easing Communication, one download at a time!</em></h5>
+		</footer>
+	</div>
 	</body>
-
-
-
 </html>
