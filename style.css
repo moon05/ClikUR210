@@ -17,6 +17,16 @@ footer{
 
 /*have to change the color settings of nav and navpills*/
 
+/*Currently selected nav bar tab*/
+#current {
+	
+}
+
+/*Other possible nav bar tabs*/
+#option:hover { 
+	color: #000099;
+}
+
 .centerBOX{
 	font-family: Verdana;
 	height: 300px;
