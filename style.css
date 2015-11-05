@@ -1,5 +1,5 @@
 html{
-	background-color: lightgrey;
+	background: lightblue;
 	-webkit-background-size: cover;
 	-moz-background-size: cover;
 	-o-background-size: cover;
@@ -7,7 +7,6 @@ html{
 }
 
 footer{
-
 	position: fixed;
 	bottom: 0;
 	left: 50%;
@@ -15,35 +14,51 @@ footer{
 
 }
 
-/*have to change the color settings of nav and navpills*/
+/*NAVIGATION BAR STYLE*/
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+li {
+	text-decoration:none;
+	padding:5px 21px;
+	margin-bottom:5px;
+	background:white;
+	color:blue;
+	text-align:center;
+}
+
+.toolBar {
+    height: 100%;
+    float:left;
+    padding-top:20px;
+    padding-left:10px;
+}
 
 /*Currently selected nav bar tab*/
 #current {
 	
 }
 
-/*Other possible nav bar tabs*/
-#option:hover { 
-	color: #000099;
-}
 
+/*HOME PAGE MESSAGE*/
 .centerBOX{
-	font-family: Verdana;
+	font-family: serif;
 	height: 300px;
-	width: 500px;
+	width: 400px;
 	position: absolute;
 	top: 52%;
 	left: 50%;
 	margin-top: -100px;
 	margin-left: -200px;
-
-
 }
 
 .aftercenterBOX{
-	font-family: Verdana;
+	font-family: serif;
 	height: 300px;
-	width: 1000px;
+	width: 900px;
 	position: absolute;
 	top: 62%;
 	left: 60%;
@@ -51,14 +66,81 @@ footer{
 	margin-left: -200px;
 }
 
-.defaulting{
 
-	height: 0px;
-	width: 0px;
-	position: fixed;
-	top: 0%;
-	left: 0%;
-	margin-top: 0px;
-	margin-left: 0px;
 
+
+
+/*Main data page*/
+.sideBOX {
+	font-family: serif;
+	height: 100%;
+    float:left;
+    margin-top: 20px;
+    padding-top:10px;
+    padding-left:10px;
+    padding-right:10px;
+    background-color:rgba(0, 0, 0, 0.5);
 }
+
+.data {
+	font-family: serif;
+	height: 200px;
+	width: 400px;
+	position: absolute;
+	top: 52%;
+	left: 47%;
+  	margin-top: -250px;
+ 	margin-left: -200px;
+}
+
+
+
+
+
+
+/*Sign-up and Log-in CSS*/
+.wholeBOX{
+	font-family: serif;
+	height: 200px;
+	width: 400px;
+	position: absolute;
+	top: 52%;
+	left: 47%;
+  	margin-top: -250px;
+ 	margin-left: -200px;
+  	background-color:rgba(0, 0, 0, 0.5);
+}
+
+.form-signin {
+  max-width: 330px;
+  padding: 15px;
+  margin: 0 auto;
+}
+
+.form-signin input[type="name"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="email"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+.form-signin input[type="password"] {
+  margin-bottom: 10px;
+  border-top-left-radius: 0;
+  border-top-right-radius: 0;
+}
+
+.form-signin input[type="number"] {
+  margin-bottom: 10px;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button{
+  -webkit-appearance: none;
+  }
