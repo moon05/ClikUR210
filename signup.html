@@ -5,6 +5,34 @@
 		<link href="style.css" rel="stylesheet" type="text/css" />
 		<script src="./jquery-2.1.4.min.js"></script>
 		<script src="./jqueryScript.js"> </script>
+		
+		<script type="text/javascript">
+			$(document).ready(function() {
+ 				$("#submit").click(function() {
+ 					$.ajax({
+    					url: "users/",
+    					type: "POST",
+    					dataType : "text",
+     					data : { firstName: $("#firstBox").val(),
+               					lastName: $("#lastBox").val(),
+               					email: $("#emailBox").val(),
+               					password: $("#passwordBox").val(),
+               					id: $("IDBox").val(),
+						},
+      			
+      				success: function( data ) {
+        				//console.log("Received!", data);
+        				if (data == 'OK') {
+          					$("#wholeBOX").html("Account has been created!");
+        				} else {
+         					$("#wholeBOX").html("Error!");
+        				}
+      				},		
+   					});
+  				});
+ 			};
+ 		</script>
+  				
 	</head>
 
 	<body>
@@ -17,17 +45,17 @@
 		<section class="wholeBOX">
 			<font size="20" style="color: white; float: right; padding-right: 10px;">Sign-Up!</font>
 			<form class="form-signin" action="#" method="post">
-				<input autofocus="" class="form-control" id="inputFirstName" name="inputFirstName" placeholder="First Name" required="" type="name" /> 
+				<input id="firstBox" autofocus="" class="form-control" id="inputFirstName" name="inputFirstName" placeholder="First Name" required="" type="name" /> 
 				</br>
-				<input autofocus="" class="form-control" id="inputLastName" name="inputLastName" placeholder="Last Name" required="" type="name" />
+				<input id="lastBox" autofocus="" class="form-control" id="inputLastName" name="inputLastName" placeholder="Last Name" required="" type="name" />
 				</br>
-				<input autofocus="" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email address" required="" type="email" />
+				<input id="emailBox"autofocus="" class="form-control" id="inputEmail" name="inputEmail" placeholder="Email address" required="" type="email" />
 				</br>
-				<input class="form-control" id="inputPassword" name="inputPassword" placeholder="Password" required="" type="password" />
+				<input id="passwordBox" class="form-control" id="inputPassword" name="inputPassword" placeholder="Password" required="" type="password" />
 				</br>
-				<input class="form-control" id="inputNumber" name="inputNumber" placeholder="StudentID" required="" type="number" />
+				<input id="IDBox" class="form-control" id="inputNumber" name="inputNumber" placeholder="StudentID" required="" type="number" />
 				</br>
-				<input type="submit" value="Sign Up">
+				<input id="submit" type="submit" value="Sign Up">
 			</form>
 		</section>
 
