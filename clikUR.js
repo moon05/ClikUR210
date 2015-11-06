@@ -25,7 +25,7 @@ app.post('/users', function (req, res) {
   }
 
   // check if user's name is already in database; if so, send an error
-  for (var i = 0; i < Database.length; i++) {
+	for (var i = 0; i < Database.length; i++) {
     var e = Database[i];
     if (e.name == ID) {
       res.send('ERROR');
@@ -36,3 +36,17 @@ app.post('/users', function (req, res) {
   Database.push(postBody);
 
   res.send('OK');
+});
+
+// Show profile data for a user
+app.get('/users/*', function (req, res) {
+  var IDLookup = req.params[0];
+  for (var i = 0; i < Database.length; i++) {
+    var e = Database[i];
+    if (e.id == IDLookup) {
+      res.send(e);
+      return;
+    }
+  }
+  res.send('{}');
+});
