@@ -5,6 +5,26 @@
 		<link href="style.css" rel="stylesheet" type="text/css" />
 		<script src="./jquery-2.1.4.min.js"></script>
 		<script src="./jqueryScript.js"> </script>
+
+		<script type="text/javascript">
+			$(document).ready(function() {
+		 		$("#readButton").click(function() {
+    				$.ajax({
+      					url: "users/" + $("#IDBox").val(),
+      					type: "GET",
+     					 dataType : "json",
+      				success: function( data ) {
+        				//console.log("You received some data!", data);
+        				if (data.id) {
+          					
+       					} else {
+          					$("#wholeBOX").html("Error: could not find user!");
+        				}
+      				},
+   					 });
+  				}
+  			}
+  		</script>
 	</head>
 
 	<body>
