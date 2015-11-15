@@ -14,7 +14,7 @@ curl -H "Content-Type: application/json" -X POST -d "{'NAME':'John Doe','ID':'28
 
 **url** clikur.xyz/api/v1/classes/new <br>
 **method** POST <br>
-**Example Posting with cURL* <br>
+**Example Posting with cURL** <br>
 curl -H "Content-Type: application/json" -X POST -d "{'TITLE':'CSC 210','SEMESTER':'1601'}" clikur.xyz/api/v1/classes/new
 
 ###Get Classes
