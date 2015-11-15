@@ -1,6 +1,6 @@
 ###Create Users
 
-**url** clikur.xyz/api/v1/users/new
+**url** clikur.xyz/api/v1/users/new <br>
 **method** POST
 **Example Posting with cURL**
 curl -H "Content-Type: application/json" -X POST -d "{'NAME':'John Doe','ID':'28240567','EMAIL':'john@u.rochester.edu','PASS':'password123'}" clikur.xyz/api/v1/users/new
