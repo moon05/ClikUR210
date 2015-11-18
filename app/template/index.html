@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+{% block html %}
+  <head>
+  	{% block head%}
+  	{% block title %}
+  	{% if title %}
+    <title>{{ title }} - ClikUR </title>
+    {% else %}
+    <title>Welcome to ClikUR</title>
+    {% endif %}
+    {% endblock title%}
+
+    
+    	<link href="../static/style.css" rel="stylesheet" type="text/css" />
+    	<link href="http://getbootstrap.com/dist/css/bootstrap.min.css" rel="stylesheet">
+
+		<script src="../static/jquery-2.1.4.min.js"></script>
+		<script src="../static/functions.js"> </script>
+
+    {% endblock head%}
+  </head>
+  <body>
+  	{% block body %}
+  	{% block navbar %}
+  		<div class="container-fluid" style="background-color: lightgrey">
+  			<header>
+				<nav>
+					<ul class="nav nav-pills pull-right" style="margin-top:10px;">
+						<li role="presentation" class="active"> <a href="/start">Home</a></li>
+						{% if not(g.user.is_authenticated) %}
+						<li role="presentation"> <a href="{{ url_for('signup') }}">Sign Up</a> </li>
+						<li role="presentation"> <a href="{{ url_for('login') }}">Log In</a> </li>
+						{% endif %}
+						{% if g.user.is_authenticated %}
+						<li role="presentation"><a href="{{ url_for('createclass')}}">Create Classes</a></li>
+						<li role="presentation"><a href="{{ url_for('myclasses')}}">My Classes</a></li>
+						<li role="presentation"> <a href="{{ url_for('logout') }}">Log Out</a> </li>
+						{% endif %}
+					</ul>
+				</nav>
+			</header>
+				<img src="../static/images/ClikUR-01.png" style="width:160px;height:65px;margin-top:7px;">
+  	{% endblock navbar %}
+<!--       <div>ClikUR: <a href="/home">Home</a></div>
+ -->      <!-- <hr>
+      {% with messages = get_flashed_messages() %}
+      	{% if messages %}
+      		<ul>
+      			{% for message in messages %}
+      				<li> {{ message }} </li>
+      			{% endfor %}
+      		</ul>
+      	{% endif%}
+      {% endwith %} -->
+
+      {% block content %}{% endblock %}
+      <footer>
+      	<h5> Be careful with whatever you do.... Do not change anything just cuz!!! </h5>
+      </footer>
+	{% endblock body %}
+		</div>
+
+  </body>
+ {% endblock html %}
+</html>

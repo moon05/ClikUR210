@@ -1,43 +1,23 @@
-<!DOCTYPE html>
-	<html>
-	<head>
-		<title>ClikUR | Log In</title>
-		<link href="style.css" rel="stylesheet" type="text/css" />
-		<script src="./jquery-2.1.4.min.js"></script>
-		<script src="./jqueryScript.js"> </script>
-	</head>
+{% extends "index.html" %}
 
-	<body>
-		<div class="container-fluid">
-		<header>
-			<img src="ClikUR.jpg" alt="ClikUR logo" width="50" style="float: left; PADDING-RIGHT: 5px">
-				<font size="20" style="padding-left: 10px">ClikUR </font>
-		</header>
+{% block content %}
 
-		<section class="wholeBOX">
-			<font size="20" style="color: white; float: right; padding-right: 10px;">Log-In!</font>
-			<form class="form-signin" action="#" method="get" style="padding-top: 60px">
-				<input class="form-control" id="inputNumber" name="inputNumber" placeholder="StudentID" required="" type="number"/>
-				</br>
-				<input class="form-control" id="inputPassword" name="inputPassword" placeholder="Password" required="" type="password" />
-				</br>
-				<input type="submit" value="Log In">
-			</form>
-		</section>
+	<h1>Sign In</h1>
+	{% block form %}
+	{% from "_formhelpers.html" import render_field %}
+		<form action="" method="post" name="login">
+		
+			{{ form.hidden_tag() }}
+			
+			<p>
+				{{ render_field(form.userName) }}<br>
+				{{ render_field(form.password) }}<br>
+				{{ render_field(form.remember_me) }} 
+			</p>
+			<p> <input type="submit" value="Sign In"> </p>
 
-		<div class="toolBar">
-    		<nav>
-				<ul>
-					<li id="current"> <a href="home.html">Home</a></li>
-					<li id="option"> <a href="signup.html">Sign Up</a></li>
-					<li id="option"> <a href="#">Log In</a></li>
-				</ul>
-			</nav>
-		</div>
+		</form>
+	{% endblock form %}
 
-		<footer>
-			<h5><em>ClikUR: Saving Money and Easing Communication, one download at a time!</em></h5>
-		</footer>
-	</div>
-	</body>
-</html>
+{% endblock %}
+

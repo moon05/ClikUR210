@@ -1,0 +1,17 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+	{% block form%}
+	{% from "_formhelpers.html" import render_field %}
+		<form method="post" action="" name="createclass">
+			{{ form.hidden_tag() }}
+		  <dl>
+		    {{ render_field(form.title) }}
+		    {{ render_field(form.semester) }}
+		  </dl>
+		  <p><input type=submit value=Create Class>
+		</form>
+	{% endblock form%}
+
+{% endblock content %}
