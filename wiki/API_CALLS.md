@@ -21,3 +21,6 @@ curl -H "Content-Type: application/json" -X POST -d "{'TITLE':'CSC 210','SEMESTE
 
 **url** clikur.xyz/api/v1/classes <br>
 **method** GET <br>
+**Output**
+_type_ = json
+[{"semester":1601,"title": ""}]
