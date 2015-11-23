@@ -23,5 +23,4 @@ curl -H "Content-Type: application/json" -X POST -d "{'TITLE':'CSC 210','SEMESTE
 **method** GET <br>
 **Output** <br>
 _type_ = json <br>
-[{"semester":1601,"title": "Human Computer Interaction","callsign":"csc212"}]
-//this output type will change, as soon as I add two/three other fields such as session and start time
+[{"title": "Human Computer Interaction", "start_time": "3:25", "semester": 1501, "session": "MW", "callsign": "csc212", "end_time": "4:40"}, {"title": "Web Programming", "start_time": "4:50", "semester": 1501, "session": "TR", "callsign": "csc210", "end_time": "6:05"}]
