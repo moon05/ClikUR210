@@ -21,6 +21,7 @@ curl -H "Content-Type: application/json" -X POST -d "{'TITLE':'CSC 210','SEMESTE
 
 **url** clikur.xyz/api/v1/classes <br>
 **method** GET <br>
-**Output**
-_type_ = json
-[{"semester":1601,"title": ""}]
+**Output** <br>
+_type_ = json <br>
+[{"semester":1601,"title": "Human Computer Interaction","callsign":"csc212"}]
+//this output type will change, as soon as I add two/three other fields such as session and start time
