@@ -10,8 +10,8 @@ curl -H "Content-Type: application/json" -X POST -d '{"NAME":"John Doe","ID":"28
 **Output** <br>
 _if success_ <br>
 _type_ = **json** <br>
-{<br>
 ```
+{
   "result":"success"
 }
 ```
@@ -20,7 +20,8 @@ _if no success_ <br>
 {
   "result":"no success"
 }
-```<br>
+```
+<br>
 
 ###Get Users
 
@@ -29,8 +30,8 @@ _if no success_ <br>
 **Output** <br>
 _if success_ <br>
 _type_ = **json**
-{<br>
 ```
+{
   "email":  "john@u.rochester.edu",
   "isProfessor":  "False",
   "password": "password123",
