@@ -38,7 +38,8 @@ _type_ = **json**
   "studentid": "28240567",
   "userName": "John Doe"
 }
-```<br>
+```
+<br>
 
 ###Create Classes
 
@@ -48,12 +49,14 @@ _type_ = **json**
 ```
 curl -H "Content-Type: application/json" -X POST -d "{'TITLE':'CSC 210','SEMESTER':'1601'}" clikur.xyz/api/v1/classes/new
 ```
+<br>
 ###Get Classes
 
 **url** clikur.xyz/api/v1/classes <br>
 **method** GET <br>
 **Output** <br>
 _type_ = json <br>
+
 ```
 [{"title": "Human Computer Interaction", "start_time": "3:25", "semester": 1501, "session": "MW", "callsign": "csc212", "end_time": "4:40"}, {"title": "Web Programming", "start_time": "4:50", "semester": 1501, "session": "TR", "callsign": "csc210", "end_time": "6:05"}]
 ```
