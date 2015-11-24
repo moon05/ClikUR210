@@ -4,20 +4,30 @@
 **method** POST <br>
 **Example Posting with cURL** <br>
 curl -H "Content-Type: application/json" -X POST -d '{"NAME":"John Doe","ID":"28240567","EMAIL":"john@u.rochester.edu","PASS":"password123","PROF":"False"}' clikur.xyz/api/v1/users/new
+<br>
 **Output** <br>
-__if success__
-{
-  "email":  "john@u.rochester.edu",
-  "isProfessor":  "False",
-  "password": "password123",
-  "studentid": "28240567",
-  "userName": "John Doe"
-}
+__if success__ <br>
+{<br>
+  "result":"success"<br>
+}<br>
+__if no success_ <br>
+{<br>
+  "result":"no success" <br>
+}<br>
 
 ###Get Users
 
-**url** clikur.xyz/api/v1/users <br>
+**url** clikur.xyz/api/v1/users/<email> <br>
 **method** GET <br>
+**Output** <br>
+__if success__ <br>
+{<br>
+  "email":  "john@u.rochester.edu",<br>
+  "isProfessor":  "False",<br>
+  "password": "password123",<br>
+  "studentid": "28240567",<br>
+  "userName": "John Doe"<br>
+}<br>
 
 ###Create Classes
 
