@@ -3,7 +3,16 @@
 **url** clikur.xyz/api/v1/users/new <br>
 **method** POST <br>
 **Example Posting with cURL** <br>
-curl -H "Content-Type: application/json" -X POST -d "{'NAME':'John Doe','ID':'28240567','EMAIL':'john@u.rochester.edu','PASS':'password123'}" clikur.xyz/api/v1/users/new
+curl -H "Content-Type: application/json" -X POST -d '{"NAME":"John Doe","ID":"28240567","EMAIL":"john@u.rochester.edu","PASS":"password123","PROF":"False"}' clikur.xyz/api/v1/users/new
+**Output** <br>
+__if success__
+{
+  "email":  "john@u.rochester.edu",
+  "isProfessor":  "False",
+  "password": "password123",
+  "studentid": "28240567",
+  "userName": "John Doe"
+}
 
 ###Get Users
 
