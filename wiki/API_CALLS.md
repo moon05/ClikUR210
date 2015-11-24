@@ -7,13 +7,14 @@ curl -H "Content-Type: application/json" -X POST -d '{"NAME":"John Doe","ID":"28
 <br>
 **Output** <br>
 _if success_ <br>
+_type_ = **json** <br>
 >{<br>
 >  "result":"success"<br>
 >}<br>
 _if no success_ <br>
-{<br>
-  "result":"no success" <br>
-}<br>
+>{<br>
+>  "result":"no success" <br>
+>}<br>
 
 ###Get Users
 
@@ -21,13 +22,14 @@ _if no success_ <br>
 **method** GET <br>
 **Output** <br>
 _if success_ <br>
-{<br>
-  "email":  "john@u.rochester.edu",<br>
-  "isProfessor":  "False",<br>
-  "password": "password123",<br>
-  "studentid": "28240567",<br>
-  "userName": "John Doe"<br>
-}<br>
+_type_ = **json**
+>{<br>
+>  "email":  "john@u.rochester.edu",<br>
+>  "isProfessor":  "False",<br>
+>  "password": "password123",<br>
+>  "studentid": "28240567",<br>
+>  "userName": "John Doe"<br>
+>}<br>
 
 ###Create Classes
 
