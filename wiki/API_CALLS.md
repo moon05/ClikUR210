@@ -6,11 +6,11 @@
 curl -H "Content-Type: application/json" -X POST -d '{"NAME":"John Doe","ID":"28240567","EMAIL":"john@u.rochester.edu","PASS":"password123","PROF":"False"}' clikur.xyz/api/v1/users/new
 <br>
 **Output** <br>
-__if success__ <br>
-{<br>
-  "result":"success"<br>
-}<br>
-__if no success_ <br>
+_if success_ <br>
+>{<br>
+>  "result":"success"<br>
+>}<br>
+_if no success_ <br>
 {<br>
   "result":"no success" <br>
 }<br>
@@ -20,7 +20,7 @@ __if no success_ <br>
 **url** clikur.xyz/api/v1/users/<email> <br>
 **method** GET <br>
 **Output** <br>
-__if success__ <br>
+_if success_ <br>
 {<br>
   "email":  "john@u.rochester.edu",<br>
   "isProfessor":  "False",<br>
