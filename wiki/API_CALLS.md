@@ -100,20 +100,26 @@ _type_ = json <br>
 curl -H "Content-Type: application/json" -X POST -d '{"TOKEN":"2df30ee5-6905-4fe2-993e-39bfe7340dce","TITLE":"Human Computer Interaction","SEMESTER":"1501","CALLSIGN":"CSC212","CRN":"1234567","SESSION":"MW","start_time":"3:25","end_time":"4:40"}' localhost:8000/api/v1/classes/new
 ```
 <br>
-**Output***<br>
+**Output**<br>
 _type_ = json
 success or no success <br>
+
 ###Get Classes
 
 **url** clikur.xyz/api/v1/classes <br>
 **method** GET <br>
-**Input with cURL**<br>
+**Input with cURL** <br>
 ```
 curl -H "Content-Type: application/json" -X GET -d '{"TOKEN":"2df30ee5-6905-4fe2-993e-39bfe7340dce"}' localhost:8000/api/v1/classes/
-``` <br>
+``` 
+<br>
 **Output** <br>
-_type_ = json array<br>
+_type_ = json array <br>
 
 ```
 [{"title": "Human Computer Interaction", "start_time": "3:25", "semester": 1501, "session": "MW", "callsign": "CSC212", "end_time": "4:40", "crn":1234567}, {"title": "Web Programming", "start_time": "4:50", "semester": 1501, "session": "TR", "callsign": "CSC210", "end_time": "6:05", "crn":1234568}]
 ```
+<br>
+
+###Post Question
+__Currently updating__
