@@ -36,21 +36,21 @@ The quiz creation and the question creation is/will be done in ajax.
 <br>
 
 #Files
-  1. run.py
-  2. db_create.py
-  3. db_migrate.py
-  3. db_upgrade.py
-  4. db_downgrade.py
-  5. config.py
+  1. run.py (_contains the run information with portname, hostname and debug enabling_)
+  2. db\_create.py (_script to create the database_)
+  3. db\_migrate.py (_script for big upgrade of database_)
+  3. db\_upgrade.py (_small upgrades_)
+  4. db\_downgrade.py (_going one version back_)
+  5. config.py (_contains all the locations of files_)
   6. /app
-    - models.py
-    - views.py
-    - forms.py
-    - __init__.py
+    - models.py (_database tables/models declarations_)
+    - views.py (_app routing and info handling_)
+    - forms.py (_contains all the necessary forms_)
+    - __init__.py (_app initializer_)
     - /static
-      * functios.js
-      * /images
-      * style.css
+      * functions.js (_contains all the necessary .js functions_)
+      * /images (_contains the logos and necessary images_)
+      * style.css (_all the styling_)
       * jquery-2.1.4.min.js
     - /template
       * index.html
