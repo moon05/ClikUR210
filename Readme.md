@@ -14,3 +14,13 @@ pip install Flask-Session
 pip install flask-login
 pip install Flask-WTF
 ```
+<br>
+To create the database and all that (activate the flask virtualenv first)
+```
+python db_create.py
+```
+<br>
+Everytime major changes done to the database model
+```
+python db_migrate.py
+```
