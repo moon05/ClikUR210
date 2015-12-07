@@ -24,3 +24,8 @@ Everytime major changes done to the database model
 ```
 python db_migrate.py
 ```
+<br>
+To run the whole app
+```
+python run.py
+```
