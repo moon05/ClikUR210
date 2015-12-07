@@ -2,16 +2,39 @@
 
 {% block content %}
 
-	{% block form%}
+	{% block table%}
 	{% from "_formhelpers.html" import render_field %}
-		<form method="get" action="" name="myclasses">
-			{{ form.hidden_tag() }}
-		  <dl>
-		    {{ render_field(form.title) }}
-		    {{ render_field(form.semester) }}
-		  </dl>
-		  <p><input type=submit value=Create Class>
-		</form>
-	{% endblock form%}
+		<table>
+			<thead>
+				<tr>
+					<td> Title </td>
+					<td> Semester </td>
+					<td> CallSign </td>
+					<td> CRN </td>
+					<td> Session </td>
+					<td> Start Time </td>
+					<td> End Time </td>
+				</tr>
+			</thead>
+			
+			{% for i in result %}
+			<tbody>
+			<tr class='clickable-row' data-href="class/{{ i['id'] }}" class_id = {{ i['id'] }}>
+				<td> {{ i['title'] }} </td>
+				<td> {{ i['semester']}} </td>
+				<td> {{ i['callsign']}} </td>
+				<td> {{ i['crn'] }} </td>
+				<td> {{ i['session']}} </td>
+				<td> {{ i['start_time']}} </td>
+				<td> {{ i['end_time']}} </td>
+ 			</tr>
+ 			</tbody>
+			{% endfor %}
+				
+		</table>
+
+
+
+	{% endblock table%}
 
 {% endblock content %}

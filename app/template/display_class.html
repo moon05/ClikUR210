@@ -1,0 +1,33 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    
+    <h1>{{ class_obj.title }}</h1>
+    <h3>{{ class_obj.callsign }}</h3>
+    <h3 id="class_id" style="display: none" >{{ class_obj.id}}</h3>
+	<table>
+
+    {% for quiz in class_obj.quizzes %}
+        <tbody>
+    	<tr>
+    		<td id="quiz_id"> {{quiz.id}} </td>
+    		<td> {{quiz.quizName}} <span style="font-size: 10px;" id = "btn_remove_quiz"id={{quiz.id}}><a href="/remove_quiz/{{quiz.id}}">X</a></span>
+    		</td> 
+    	</tr>
+    </tbody>
+    {% endfor %}
+	</table>
+
+
+    {% block form %}
+    {% from "_formhelpers.html" import render_field %}
+    	<form method="post" id="createQuiz_form">
+    	{{ render_field(form.quizName) }} <input type="submit" value="Add Quiz" id="btn_add_quiz" data-href="/createQuiz/{{ class_obj.id }}" class_id = {{ class_obj.id }} >
+		</form>
+	{% endblock form %}
+
+    <!-- quiz format -->
+    <h3>Question 1<span style="font-size: 10px;" id="quiz_1"><a href="/remove_quiz/1">X</a></span></h3>
+
+{% endblock content %}

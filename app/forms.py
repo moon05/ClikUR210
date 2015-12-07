@@ -18,3 +18,16 @@ class LoginForm(Form):
 class CreateClassForm(Form):
 	title = StringField('Title', [validators.Required()])
 	semester = IntegerField('Semester', [validators.Required()])
+	callsign = StringField('CallSign', [validators.Required()])
+	CRN = IntegerField('CRN', [validators.Required()])
+	session = StringField('Session', [validators.Required()])
+	start_time = StringField('Start Time', [validators.Required()])
+	end_time = StringField('End Time', [validators.Required()])
+
+class CreateQuizForm(Form):
+	quizName = StringField('Quiz Name', [validators.Required()])
+	
+class CreateQuestionForm(Form):
+	questionName = StringField('Question Name', [validators.Required()])
+	option = StringField('Options', [validators.Required()])
+	correct = BooleanField('Correct', [validators.Required()])

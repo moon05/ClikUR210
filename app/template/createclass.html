@@ -9,8 +9,13 @@
 		  <dl>
 		    {{ render_field(form.title) }}
 		    {{ render_field(form.semester) }}
+		    {{ render_field(form.callsign) }}
+		    {{ render_field(form.CRN) }}
+		    {{ render_field(form.session) }}
+		    {{ render_field(form.start_time) }}
+		   	{{ render_field(form.end_time) }}
 		  </dl>
-		  <p><input type=submit value=Create Class>
+		  <p><input type=submit value=Create Class></p>
 		</form>
 	{% endblock form%}
 

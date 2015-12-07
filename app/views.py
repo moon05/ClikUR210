@@ -1,8 +1,8 @@
 from flask import render_template, flash, redirect, url_for, request, jsonify, session, g, abort
 from app import app, db, lm
 from flask.ext.login import login_user, logout_user, current_user, login_required
-from .forms import LoginForm, RegistrationForm, CreateClassForm
-from .models import User, Allclass, Enrollment
+from .forms import LoginForm, RegistrationForm, CreateClassForm, CreateQuizForm
+from .models import User, Allclass, Enrollment, Quiz, Question, Option
 import json
 import ast
 import inspect
@@ -27,12 +27,11 @@ def internal_error(error):
 	return render_template('500.html'), 500
 
 @app.route('/')
-
-@app.route('/start')
 def index():
 	return render_template('start.html',
 							title="ClikUR")
 
+######   API CALLS    #######
 
 
 @app.route('/api/v1/users', methods=['GET'])
@@ -52,9 +51,26 @@ def post_user():
 	db.session.commit()
 	return redirect(url_for('get_user'))
 
+@app.route('/api/v1/classes', methods=['GET'])
+def get_classes():
+	show_classes = Allclass.query.all()
+	converted = map(Allclass.to_json, show_classes)
+	 
+	return json.dumps(converted)
+
+@app.route('/api/v1/classes/new', methods=['POST'])
+def post_class():
+	data = request.data
+	data_dict = ast.literal_eval(data)
+	print data_dict
+	classes = Allclass(title=data_dict['TITLE'],semester=data_dict['SEMESTER'])
+	classes.users.append(g.user)
+	db.session.add(classes)
+	db.session.commit()
+	return redirect(url_for('get_classes'))
 
 
-
+######   WEBSITE   ######
 
 
 @app.route('/home')
@@ -134,47 +150,41 @@ def logout():
 
 
 #classes part
-@app.route('/api/v1/classes', methods=['GET'])
-def get_classes():
-	show_classes = Allclass.query.all()
-	converted = map(Allclass.to_json, show_classes)
-	 
-	return json.dumps(converted)
+
 
 @login_required
 @app.route('/myclasses',methods=['GET','POST'])
 def myclasses():
 	user = g.user
 	print ""
-	user2 = g.user
-	# print "Printing user2: " + str(user2.Enroll)
-	print ""
-	print "Printing relationship"
-	# print user.Enroll
-	print "End print"
-	# show_classes = user.enrolled_classes
-	# print show_classes
-	# converted = map(Allclass.to_json, user.Enroll)
-	# return json.dumps(converted)
-	return json.dumps(user.Enrolled)
+	# print "Printing relationship" 
+	# for classes in user.enrolled.all():
+	# 	print classes.title
+	# 	print classes.semester
+	# print "End print"
+	show_classes = user.Enrolled.all()
+	converted = map(Allclass.to_json, show_classes)
+	print "converted type: " + str(type(converted))
+	print converted
 	
-@app.route('/api/v1/classes/new', methods=['POST'])
-def post_class():
-	data = request.data
-	data_dict = ast.literal_eval(data)
-	print data_dict
-	classes = Allclass(title=data_dict['TITLE'],semester=data_dict['SEMESTER'])
-	db.session.add(classes)
-	db.session.commit()
-	return redirect(url_for('get_classes'))
+	# list_both = []
+	# for i in (converted):
+	# 	list_both.append((i['title'],i['semester']))
+	
+	# return json.dumps(converted)
+	return render_template('myclasses.html',result=converted)
 
 
-
+@login_required
 @app.route('/createclass',methods=['GET', 'POST'])
 def createclass():
 	form = CreateClassForm()
 	if form.validate_on_submit():
-		newClass = Allclass(title=form.title.data, semester=form.semester.data)
+		newClass = Allclass(title=form.title.data, semester=form.semester.data,
+							callsign=form.callsign.data, CRN = form.CRN.data,
+							session=form.session.data, start_time=form.start_time.data,
+							end_time=form.end_time.data)
+		newClass.users.append(g.user)
 		db.session.add(newClass)
 		db.session.commit()
 		return redirect(url_for('myclasses'))
@@ -182,6 +192,81 @@ def createclass():
 		return render_template('createclass.html',
 								title='Create Class',
 								form=form)
+
+##to get the id of the class for adding quiz
+@login_required
+@app.route('/class/<class_id>',methods=['GET', 'POST'])
+def display_class(class_id=None):
+
+	myClass = Allclass.query.filter_by(id=class_id).first()
+
+	form = CreateQuizForm()
+
+
+	return render_template('display_class.html',class_obj = myClass, form=form)
+
+
+#to get class info in json format
+@login_required
+@app.route('/class_js/<class_id>',methods=['GET', 'POST'])
+def get_class_json(class_id=None):
+
+	myClass = g.user.Enrolled.filter_by(id=class_id).first()
+    
+    #creating response object
+	response = jsonify(myClass.to_json())
+	response.status_code = 200 
+
+	return response
+
+@login_required
+@app.route('/createQuiz',methods=['GET','POST'])
+def createQuiz(class_id=None):
+
+	form = CreateQuizForm()
+	
+	print request.values.to_dict()
+	new_quiz = request.values.to_dict()
+	print new_quiz['quizName']
+	print new_quiz['class_id']
+	
+	if new_quiz:
+		newQuiz = Quiz(quizName=new_quiz['quizName'])
+		curr_class = Allclass.query.filter_by(id=new_quiz['class_id']).first()
+		curr_class.quizzes.append(newQuiz)
+		db.session.add(curr_class)
+		db.session.commit()
+		quizzes = Quiz.query.all()
+		converted = map(Quiz.to_json, quizzes)
+		print converted
+
+		# converted = map(Quiz.to_json, newQuiz)
+		# if everything goes right, change the status
+		response = jsonify({'status':'True'})
+		response.status_code = 200	
+	else:
+		response = jsonify({'status':'False'})
+		response.status_code = 200
+
+	return response
+
+@login_required
+@app.route('/removeQuiz', methods=['GET','POST'])
+def deleteQuiz(class_id=None):
+	quiz_delete = request.values.to_dict()
+	print quiz_delete['quiz_id']
+
+	if quiz_delete:
+		curr_class = Allclass.query.filter_by(id=quiz_delete['class_id']).first()
+		curr_class.quiz.filter_by(id=quiz_delete['quiz_id']).first().delete()
+		db.session.commit()
+		response = jsonify({'status':'True'})
+		response.status_code = 200
+	else:
+		response = jsonify({'status':'False'})
+		response.status_code = 200
+
+	return response
 
 
 

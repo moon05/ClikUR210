@@ -1,0 +1,25 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+	{% block form%}
+	{% from "_formhelpers.html" import render_field %}
+		
+		<tbody>
+			{% for i in result %}
+			<tr class='clickable-row' data-href="display_class/{{ i['id'] }}" class_id = {{ i['id'] }}>
+				<td> {{ i['id'] }} </td>
+				<td> {{ i['quizName']}} </td>
+ 			</tr>
+ 			</tbody>
+ 			
+		<form method="post" action="" name="creatQuiz">
+			{{ form.hidden_tag() }}
+		  <dl>
+		    {{ render_field(form.quizName) }}
+		  </dl>
+		  <p><input type=submit value=Create Quiz>
+		</form>
+	{% endblock form%}
+
+{% endblock content %}

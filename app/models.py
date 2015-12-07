@@ -18,7 +18,7 @@ class User(db.Model):
 	password = db.Column(db.String(255), index=False, unique=False)
 	Enrolled = db.relationship('Allclass',
 								secondary=Enrollment,
-								backref=db.backref('allEnrolled',lazy='dynamic'),
+								backref='users',
 								lazy='dynamic'
 								)
 	
@@ -71,58 +71,100 @@ class User(db.Model):
 
 
 
-
 class Allclass(db.Model):
 	__tablename__="tblAllclass"
 	id = db.Column(db.Integer, primary_key=True)
 	title = db.Column(db.String(225), index=False, unique=False)
 	semester = db.Column(db.Integer, index=False, unique=False)
-	Enroll = db.relationship('Allclass',
+	callsign = db.Column(db.String, index=False, unique=False)
+	CRN = db.Column(db.Integer, index=False, unique=False)
+	session = db.Column(db.String, index=False, unique=False)
+	start_time = db.Column(db.String, index=False, unique=False)
+	end_time = db.Column(db.String, index=False, unique=False)
+
+
+
+	"""Enroll = db.relationship('Allclass',
 								secondary=Enrollment,
 								primaryjoin=(Enrollment.c.class_id==id),
 								backref=db.backref('classes',lazy='dynamic'),
-								lazy='dynamic')
-
+								lazy='dynamic')"""
+	quizzes = db.relationship('Quiz',
+								backref="allclass",
+								lazy="dynamic")
 	def to_json(self):
 		return {
+			"id": self.id,
 			"title": self.title,
-			"semester": self.semester
+			"semester": self.semester,
+			"callsign": self.callsign,
+			"crn": self.CRN,
+			"session": self.session,
+			"start_time": self.start_time,
+			"end_time": self.end_time
 			}
 
 
 
+class Quiz(db.Model):
+ 	# __tablename__ = "Quiz"
+	id = db.Column(db.Integer, primary_key=True)
+	quizName = db.Column(db.String(500), index=False, unique=False)
+	classID = db.Column(db.Integer, db.ForeignKey('tblAllclass.id'))
+	questions = db.relationship('Question',
+								backref="quiz",
+								lazy="dynamic")
+	
+	def to_json(self):
+		return{
+			"quizID": self.id,
+			"quizName": self.quizName,
+			"classID": self.classID,
+			# "activeQuestion": self.activeQuestion
+		}
 
 
+class Question(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	quizID = db.Column(db.Integer, db.ForeignKey('quiz.id'))
+	questionText = db.Column(db.String(500), index=False, unique=False)
 
-# class Quiz(db.Model):
-# 	id = db.Column(db.Integer, primary_key=True)
-# 	classID = db.Column(db.Integer, db.ForeignKey('Class.id'))
-# 	activeQuestion = db.Column(db.Integer, db.ForeignKey('MC_Question.id'))
+	options = db.relationship('Option',
+								backref="question",
+								lazy="dynamic")
 
-# class MC_Question(db.Model):
-# 	id = db.Column(db.Integer, primary_key=True)
-# 	quizID = db.Column(db.Integer, db.ForeignKey('Quiz.id'))
-# 	answer = db.Column(db.Integer, db.ForeignKey('MC_Question_Options.id'))
-# 	questionText = db.Column(db.String(500), index=False, unique=False)
+	def to_json(self):
+		return{
+			"quizID": self.quizID,
+			# "answer": self.answer,
+			"questionText": self.questionText
+		}
 
-# class MC_Question_Answer(db.Model):
-# 	id = db.Column(db.Integer, primary_key=True)
-# 	questionID = db.Column(db.Integer, db.ForeignKey('MC_Question.id'))
-# 	student = db.Column(db.Integer, db.ForeignKey('User.studentid'))
-# 	answer = db.Column(db.Integer, db.ForeignKey('MC_Question_Options.id'))
-# 	answerTime = db.Column(db.DateTime)
+class StudentAnswer(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	questionID = db.Column(db.Integer, db.ForeignKey('Question.id'))
+	student = db.Column(db.Integer, db.ForeignKey('User.studentid'))
+	answer = db.Column(db.Integer)
+	answerTime = db.Column(db.DateTime)
 
-# class MC_Question_Options(db.Model):
-# 	id = db.Column(db.Integer, primary_key=True)
-# 	questionID = db.Column(db.Integer, db.ForeignKey('MC_Question.id'))
-# 	description = db.Column(db.String(500), index=False, unique=False)
+	def to_json(self):
+		return{
+			"questionID": self.questionID,
+			"studentid": self.student,
+			"answer": self.answer,
+			"answerTime": self.answerTime
+		}
 
+class Option(db.Model):
+	id = db.Column(db.Integer, primary_key=True)
+	questionID = db.Column(db.Integer, db.ForeignKey('question.id'))
+	description = db.Column(db.String(500), index=False, unique=False)
+	correct = db.Column(db.Integer,index=False,unique=False)
 
-# class Post(db.Model):
-# 	id = db.Column(db.Integer, primary_key=True)
-# 	body = db.Column(db.String(140))
-# 	timestamp = db.Column(db.DateTime)
-# 	user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
-
-# 	def __repr__(self):
-# 		return '<Post %r>' % (self.body)
+	def to_json(self):
+		return{
+			"questionID":self.questionID,
+			"description":self.description,
+			"correct":self.correct
+		}
+	
