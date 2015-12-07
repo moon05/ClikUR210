@@ -35,10 +35,15 @@ We used Flask, a micro-webframework based on Python, as the web framework.
 The quiz creation and the question creation is/will be done in ajax.
 <br>
 #Files
-  -/app
-  1. models.py
-  2. views.py
-  3. forms.py
-  4. __init__.py
-  5. /static
-  6. /template
+  1./app
+    1. models.py
+    2. views.py
+    3. forms.py
+    4. __init__.py
+    5. /static
+      *functios.js
+      */images
+      *style.css
+      *jquery-2.1.4.min.js
+    6. /template
+      *index.html
