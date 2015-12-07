@@ -34,8 +34,15 @@ python run.py
 We used Flask, a micro-webframework based on Python, as the web framework.
 The quiz creation and the question creation is/will be done in ajax.
 <br>
+
 #Files
-  1. /app
+  1. run.py
+  2. db_create.py
+  3. db_migrate.py
+  3. db_upgrade.py
+  4. db_downgrade.py
+  5. config.py
+  6. /app
     - models.py
     - views.py
     - forms.py
