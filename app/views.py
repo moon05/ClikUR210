@@ -193,6 +193,7 @@ def createclass():
 								title='Create Class',
 								form=form)
 
+##QUIZ PART
 ##to get the id of the class for adding quiz
 @login_required
 @app.route('/class/<class_id>',methods=['GET', 'POST'])
@@ -252,13 +253,14 @@ def createQuiz(class_id=None):
 
 @login_required
 @app.route('/removeQuiz', methods=['GET','POST'])
-def deleteQuiz(class_id=None):
+def removeQuiz():
 	quiz_delete = request.values.to_dict()
 	print quiz_delete['quiz_id']
 
 	if quiz_delete:
-		curr_class = Allclass.query.filter_by(id=quiz_delete['class_id']).first()
-		curr_class.quiz.filter_by(id=quiz_delete['quiz_id']).first().delete()
+		quiz = Quiz.query.filter_by(id=quiz_delete['quiz_id']).first()
+		
+		db.session.delete(quiz)
 		db.session.commit()
 		response = jsonify({'status':'True'})
 		response.status_code = 200
@@ -269,4 +271,6 @@ def deleteQuiz(class_id=None):
 	return response
 
 
+
+##QUESTION PART
 
