@@ -36,14 +36,25 @@ The quiz creation and the question creation is/will be done in ajax.
 <br>
 #Files
   1. /app
-    1. models.py
-    2. views.py
-    3. forms.py
-    4. __init__.py
-    5. /static
-      *functios.js
-      */images
-      *style.css
-      *jquery-2.1.4.min.js
-    6. /template
-      *index.html
+    - models.py
+    - views.py
+    - forms.py
+    - __init__.py
+    - /static
+      * functios.js
+      * /images
+      * style.css
+      * jquery-2.1.4.min.js
+    - /template
+      * index.html
+      * main.html
+      * home.html
+      * start.html
+      * login.html
+      * signup.html
+      * myclasses.html
+      * createclass.html
+      * display_class.html
+      * createQuiz.html
+      * 404.html
+      * _formhelpers.html
