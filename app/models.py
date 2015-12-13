@@ -140,31 +140,29 @@ class Question(db.Model):
 			"questionText": self.questionText
 		}
 
-class StudentAnswer(db.Model):
-	id = db.Column(db.Integer, primary_key=True)
-	questionID = db.Column(db.Integer, db.ForeignKey('Question.id'))
-	student = db.Column(db.Integer, db.ForeignKey('User.studentid'))
-	answer = db.Column(db.Integer)
-	answerTime = db.Column(db.DateTime)
+# class StudentAnswer(db.Model):
+# 	id = db.Column(db.Integer, primary_key=True)
+# 	questionID = db.Column(db.Integer, db.ForeignKey('Question.id'))
+# 	student = db.Column(db.Integer, db.ForeignKey('User.studentid'))
+# 	answer = db.Column(db.Integer)
+# 	answerTime = db.Column(db.DateTime)
 
-	def to_json(self):
-		return{
-			"questionID": self.questionID,
-			"studentid": self.student,
-			"answer": self.answer,
-			"answerTime": self.answerTime
-		}
+# 	def to_json(self):
+# 		return{
+# 			"questionID": self.questionID,
+# 			"studentid": self.student,
+# 			"answer": self.answer,
+# 			"answerTime": self.answerTime
+# 		}
 
 class Option(db.Model):
 	id = db.Column(db.Integer, primary_key=True)
 	questionID = db.Column(db.Integer, db.ForeignKey('question.id'))
-	description = db.Column(db.String(500), index=False, unique=False)
-	correct = db.Column(db.Integer,index=False,unique=False)
+	option = db.Column(db.String(500), index=False, unique=False)
 
 	def to_json(self):
 		return{
 			"questionID":self.questionID,
-			"description":self.description,
-			"correct":self.correct
+			"option":self.option,
 		}
 	

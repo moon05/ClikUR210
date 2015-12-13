@@ -26,8 +26,9 @@ class CreateClassForm(Form):
 
 class CreateQuizForm(Form):
 	quizName = StringField('Quiz Name', [validators.Required()])
-	
+
 class CreateQuestionForm(Form):
-	questionName = StringField('Question Name', [validators.Required()])
+	questionText = StringField('Question Name', [validators.Required()])
+
+class CreateOptionForm(Form):
 	option = StringField('Options', [validators.Required()])
-	correct = BooleanField('Correct', [validators.Required()])

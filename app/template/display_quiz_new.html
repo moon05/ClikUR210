@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    
+    <h1>{{ quiz_obj.quizName }}</h1>
+    <h3 id="quiz_id" style="display: none" >{{ quiz_obj.id}}</h3>
+    <table class="table">
+
+    {% for question in quiz_obj.questions %}
+        <tbody>
+        <tr id="question{{question.id}}">
+            <td id="question_id"> {{question.id}} </td>
+            <td> <a href="/question/{{question.id}}">{{question.questionText}}</a> <span style="font-size: 10px;" > <a question_id={{question.id}} quiz_id= {{quiz_obj.id}} class="btn_remove_question" href="#">X</a> </span>
+            </td> 
+        </tr>
+        </tbody>
+    {% endfor/ %}
+    </table>
+
+
+    {% block form %}
+    {% from "_formhelpers.html" import render_field %}
+        <form method="post" id="createQuestion_form">
+        {{ render_field(form.questionText) }} <input type="submit" value="Add Quiz" id="btn_add_question" data-href="/createQuestion/{{ quiz_obj.id }}" quiz_id = {{ quiz_obj.id }} >
+        </form>
+    {% endblock form %}
+
+    <!-- quiz format -->
+    <h3>Quiz 1<span style="font-size: 10px;" id="quiz_1"><a href="/remove_quiz/1">X</a></span></h3>
+
+{% endblock content %}

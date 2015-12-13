@@ -1,0 +1,32 @@
+{% extends "index.html" %}
+
+{% block content %}
+
+    
+    <h1>{{ question_obj.questionText }}</h1>
+    <h3 id="question_id" style="display: none" >{{ question_obj.id}}</h3>
+    <table class="table">
+
+    {% for option in question_obj.options %}
+        <tbody>
+        <tr id="option{{option.id}}">
+            <td id="option_id"> {{option.id}} </td>
+            <td> {{option.option}} <span style="font-size: 10px;" > <a option_id={{option.id}} question_id= {{question_obj.id}} class="btn_remove_option" href="#">X</a> </span>
+            </td> 
+        </tr>
+        </tbody>
+    {% endfor %}
+    </table>
+
+
+    {% block form %}
+    {% from "_formhelpers.html" import render_field %}
+        <form method="post" id="createOption_form">
+        {{ render_field(form.option) }} <input type="submit" value="Add Option" id="btn_add_option" data-href="/createOption/{{ question_obj.id }}" question_id = {{ question_obj.id }} >
+        </form>
+    {% endblock form %}
+
+    <!-- quiz format -->
+    <h3>Question 1<span style="font-size: 10px;" id="quiz_1"><a href="/remove_option/1">X</a></span></h3>
+
+{% endblock content %}
